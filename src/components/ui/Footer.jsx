@@ -2,12 +2,10 @@ import styled from "styled-components";
 
 export default function Footer() {
   return (
-    <>
-      <_footer>
-        <div>개인정보 처리방침 | 이용 약관</div>
-        <div>All rights reserved @ Codestates</div>
-      </_footer>
-    </>
+    <_footer>
+      <p>개인정보 처리방침 | 이용 약관</p>
+      <p>All rights reserved @ Codestates</p>
+    </_footer>
   );
 }
 

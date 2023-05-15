@@ -2,6 +2,19 @@ import styled from "styled-components";
 import MenuButton from "./MenuButton";
 import { Link } from "react-router-dom";
 
+export default function Header() {
+  return (
+    <_header>
+      <Link to={"/"}>
+        <Logo>
+          <img src="/logo.png" alt="logo" />
+        </Logo>
+      </Link>
+      <MenuButton />
+    </_header>
+  );
+}
+
 const _header = styled.header`
   width: 100%;
   height: 80px;
@@ -16,16 +29,3 @@ const Logo = styled.span`
   cursor: pointer;
   margin-left: 2rem;
 `;
-
-export default function Header() {
-  return (
-    <_header>
-      <Link to={"/"}>
-        <Logo>
-          <img src="/logo.png" alt="logo" />
-        </Logo>
-      </Link>
-      <MenuButton />
-    </_header>
-  );
-}
