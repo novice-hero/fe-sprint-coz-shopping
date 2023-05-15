@@ -10,16 +10,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 
-const MenuBtn = style.span`
-  cursor: pointer;
-  margin-right: 2rem;
-`;
-
-const MenuLink = style(Link)`
-  text-decoration: none;
-  color: black
-`;
-
 export default function MenuButton() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -103,3 +93,13 @@ export default function MenuButton() {
     </>
   );
 }
+
+const MenuBtn = style.span`
+  cursor: pointer;
+  margin-right: 6rem;
+`;
+
+const MenuLink = style(Link)`
+  text-decoration: none;
+  color: black
+`;

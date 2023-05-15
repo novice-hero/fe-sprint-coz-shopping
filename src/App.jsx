@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router";
-import Header from "./components/ui/Header";
+import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
 import ProductListPage from "./pages/ProductListPage";
 import BookmarkListPage from "./pages/BookmarkListPage";
-import Footer from "./components/ui/Footer";
+import Footer from "./components/Footer";
 
 function App() {
   return (

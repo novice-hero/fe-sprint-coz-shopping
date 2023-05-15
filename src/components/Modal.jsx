@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Bookmark from "./Bookmark";
 import { AiOutlineClose } from "react-icons/ai";
-import { modalActions } from "../../store/ModalSlice";
+import { modalActions } from "../store/ModalSlice";
 
 export default function Modal() {
   const modalData = useSelector((state) => state.modal.item);
