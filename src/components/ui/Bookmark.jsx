@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 import { bookmarkActions } from "../../store/bookmarkSlice";
+import { useEffect } from "react";
 
 export default function Bookmark({ data }) {
   const bookmark = useSelector((state) => state.bookmark);
@@ -12,13 +13,16 @@ export default function Bookmark({ data }) {
 
   const saveBookmark = () => {
     dispatch(bookmarkActions.add(data));
-    localStorage.setItem("bookmark", JSON.stringify(bookmark));
   };
 
   const removeBookmark = (id) => {
     dispatch(bookmarkActions.remove(id));
-    localStorage.setItem("bookmark", JSON.stringify(bookmark));
   };
+
+  useEffect(() => {
+    if (bookmark.length === 0) return;
+    localStorage.setItem("bookmark", JSON.stringify(bookmark));
+  }, [bookmark]);
 
   return isBookmark ? (
     <BookmarkButton onClick={() => removeBookmark(data.id)}>
