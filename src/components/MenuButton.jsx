@@ -96,7 +96,7 @@ export default function MenuButton() {
 
 const MenuBtn = style.span`
   cursor: pointer;
-  margin-right: 2rem;
+  margin-right: 6rem;
 `;
 
 const MenuLink = style(Link)`

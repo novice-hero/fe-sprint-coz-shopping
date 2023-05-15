@@ -25,7 +25,7 @@ const _header = styled.header`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `;
 
-const Logo = styled.span`
+const Logo = styled.h1`
   cursor: pointer;
-  margin-left: 2rem;
+  margin-left: 6rem;
 `;
