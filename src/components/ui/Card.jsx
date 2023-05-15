@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import Bookmark from "./Bookmark";
+import Modal from "./Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { modalActions } from "../../store/ModalSlice";
 
 export default function Card({ data }) {
+  const dispatch = useDispatch();
+  const modalState = useSelector((state) => state.modal.check);
+
   const url = data.image_url ? data.image_url : data.brand_image_url;
 
   let content = "";
@@ -11,8 +17,15 @@ export default function Card({ data }) {
 
   return (
     <>
+      {modalState && <Modal />}
       <Item>
-        <ItemImage src={url} alt={data.title} />
+        <ItemImage
+          src={url}
+          alt={data.title}
+          onClick={() => {
+            dispatch(modalActions.add(data));
+          }}
+        />
         <Bookmark data={data} />
 
         <FirstDiv>
