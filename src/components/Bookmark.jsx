@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
-import { bookmarkActions } from "../../store/bookmarkSlice";
+import { bookmarkActions } from "../store/bookmarkSlice";
 import { useEffect } from "react";
 
 export default function Bookmark({ data }) {

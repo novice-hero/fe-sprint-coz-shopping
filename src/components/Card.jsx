@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Bookmark from "./Bookmark";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { modalActions } from "../../store/ModalSlice";
+import { modalActions } from "../store/ModalSlice";
 
 export default function Card({ data }) {
   const dispatch = useDispatch();

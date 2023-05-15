@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Card from "../components/ui/Card";
+import Card from "../components/Card";
 
 export default function MainPage() {
   const dummy = [
