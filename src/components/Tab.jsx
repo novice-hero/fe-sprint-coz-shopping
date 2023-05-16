@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export default function Tab({ url, title, id, selectId, handleClick }) {
+export default function Tab({ tab, selectId, handleClick }) {
   return (
-    <Wrapper onClick={() => handleClick(id)}>
-      <ImgCircle src={url} alt="tab_img" />
-      {id === selectId ? (
-        <TitleSelect>{title}</TitleSelect>
+    <Wrapper onClick={() => handleClick(tab.id, tab.type)}>
+      <ImgCircle src={tab.url} alt="tab_img" />
+      {tab.id === selectId ? (
+        <TitleSelect>{tab.title}</TitleSelect>
       ) : (
-        <TitleNoSelect>{title}</TitleNoSelect>
+        <TitleNoSelect>{tab.title}</TitleNoSelect>
       )}
     </Wrapper>
   );
