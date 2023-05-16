@@ -45,12 +45,11 @@ const Backdrop = styled.div`
   bottom: 0;
   left: 0;
   z-index: 99;
-  background-color: #e8e8e813;
 `;
 
 const ModalContent = styled.div`
+  position: relative;
   border-radius: 12px;
-  filter: drop-shadow(0px 0px 28px rgba(0, 0, 0, 0.3));
 `;
 
 const ItemImage = styled.img`
