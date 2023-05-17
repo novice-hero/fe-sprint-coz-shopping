@@ -10,53 +10,56 @@ export default function ProductListPage() {
   const filteredItem = useSelector((state) => state.productList.items);
   const filteredType = useSelector((state) => state.productList.currentType);
   const viewLimit = useSelector((state) => state.productList.limit);
+  const page = useSelector((state) => state.productList.page);
   const endPage = useSelector((state) => state.productList.endPage);
   const inview = useSelector((state) => state.productList.inview);
   const dispatch = useDispatch();
 
   const [item, setItem] = useState([]);
-  const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchAllData = async () => {
       const data = await cozShoppingApi.getAllItem();
       dispatch(productListActions.clearItems());
-      dispatch(
-        productListActions.setEndPage(Math.ceil(data.length / viewLimit))
-      );
+
       if (filteredType === "All") {
         dispatch(productListActions.addItems(data));
+        dispatch(
+          productListActions.setEndPage(Math.ceil(data.length / viewLimit))
+        );
       } else {
         dispatch(
           productListActions.addItems(
             data.filter((v) => v.type === filteredType)
           )
         );
+        dispatch(
+          productListActions.setEndPage(
+            Math.ceil(filteredItem.length / viewLimit)
+          )
+        );
       }
       setItem([]);
-      setPage(0);
+      dispatch(productListActions.resetPage());
     };
 
     fetchAllData();
-  }, [filteredType]);
+  }, [dispatch, filteredItem.length, filteredType, viewLimit]);
 
   useEffect(() => {
-    if (inview && !loading && page < endPage - 1) {
-      setPage((prevPage) => prevPage + 1);
-      console.log(page);
+    if (inview) {
+      dispatch(productListActions.increasePage());
     }
   }, [inview]);
 
   const getItems = useCallback(() => {
-    setLoading(true);
-    setItem((prev) =>
-      prev.concat(
-        filteredItem.slice(page * viewLimit, page * viewLimit + viewLimit)
-      )
-    );
-    setLoading(false);
-  }, [page, filteredItem, viewLimit]);
+    page < endPage &&
+      setItem((prev) =>
+        prev.concat(
+          filteredItem.slice(page * viewLimit, page * viewLimit + viewLimit)
+        )
+      );
+  }, [page, endPage, filteredItem, viewLimit]);
 
   useEffect(() => {
     getItems();

@@ -7,6 +7,7 @@ const productListSlice = createSlice({
     currentId: 0,
     items: [],
     limit: 12,
+    page: 0,
     endPage: null,
     inview: false,
   },
@@ -28,6 +29,12 @@ const productListSlice = createSlice({
     },
     setInview: (state, action) => {
       state.inview = action.payload;
+    },
+    increasePage: (state) => {
+      state.page++;
+    },
+    resetPage: (state) => {
+      state.page = 0;
     },
   },
 });
