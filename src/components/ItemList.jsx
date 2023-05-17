@@ -15,7 +15,12 @@ const ItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  flex-wrap: wrap;
   padding: 0px;
   gap: 24px;
   width: 1128px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

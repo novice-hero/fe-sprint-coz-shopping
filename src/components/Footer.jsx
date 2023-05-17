@@ -1,8 +1,19 @@
+import { useInView } from "react-intersection-observer";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { productListActions } from "../store/ProductListSlice";
+import { useEffect } from "react";
 
 export default function Footer() {
+  const { ref, inView } = useInView({ threshold: 0.5 });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(productListActions.setInview(inView));
+  }, [inView]);
+
   return (
-    <_footer>
+    <_footer ref={ref}>
       <p>개인정보 처리방침 | 이용 약관</p>
       <p>All rights reserved @ Codestates</p>
     </_footer>

@@ -1,19 +1,22 @@
+import { useDispatch, useSelector } from "react-redux";
+import { productListActions } from "../store/ProductListSlice";
 import styled from "styled-components";
 import Tab from "./Tab";
-import { useState } from "react";
 
 export default function TabList() {
   const tabs = [
-    { id: 0, url: "/tab_all.png", title: "전체" },
-    { id: 1, url: "/tab_product.png", title: "상품" },
-    { id: 2, url: "/tab_category.png", title: "카테고리" },
-    { id: 3, url: "/tab_exhibition.png", title: "기획전" },
-    { id: 4, url: "/tab_brand.png", title: "브랜드" },
+    { id: 0, url: "/tab_all.png", title: "전체", type: "All" },
+    { id: 1, url: "/tab_product.png", title: "상품", type: "Product" },
+    { id: 2, url: "/tab_category.png", title: "카테고리", type: "Category" },
+    { id: 3, url: "/tab_exhibition.png", title: "기획전", type: "Exhibition" },
+    { id: 4, url: "/tab_brand.png", title: "브랜드", type: "Brand" },
   ];
-  const [selectId, setSelectId] = useState(0);
+  const selectId = useSelector((state) => state.productList.currentId);
+  const dispatch = useDispatch();
 
-  const handleClick = (id) => {
-    setSelectId(id);
+  const handleClick = (id, type) => {
+    dispatch(productListActions.changeId(id));
+    dispatch(productListActions.changeType(type));
   };
 
   return (
@@ -21,9 +24,7 @@ export default function TabList() {
       {tabs.map((tab) => (
         <Tab
           key={tab.id}
-          url={tab.url}
-          title={tab.title}
-          id={tab.id}
+          tab={tab}
           selectId={selectId}
           handleClick={handleClick}
         />
@@ -42,4 +43,5 @@ const TabContainer = styled.div`
 
   width: 554px;
   height: 122px;
+  margin-top: 1rem;
 `;
