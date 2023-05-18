@@ -15,7 +15,7 @@ export default function ToastContainer() {
 }
 
 const ToastBox = styled.section`
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
