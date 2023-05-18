@@ -3,12 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const productListSlice = createSlice({
   name: "productListSlice",
   initialState: {
-    currentType: "All",
-    currentId: 0,
     items: [],
     limit: 12,
     page: 0,
-    endPage: null,
+    endPage: 1,
     inview: false,
   },
   reducers: {
