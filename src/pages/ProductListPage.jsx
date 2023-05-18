@@ -5,10 +5,11 @@ import ItemList from "../components/ItemList";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { productListActions } from "../store/ProductListSlice";
+import { tabActions } from "../store/tabSlice";
 
 export default function ProductListPage() {
   const filteredItem = useSelector((state) => state.productList.items);
-  const filteredType = useSelector((state) => state.productList.currentType);
+  const filteredType = useSelector((state) => state.tab.currentType);
   const viewLimit = useSelector((state) => state.productList.limit);
   const page = useSelector((state) => state.productList.page);
   const endPage = useSelector((state) => state.productList.endPage);
@@ -16,6 +17,10 @@ export default function ProductListPage() {
   const dispatch = useDispatch();
 
   const [item, setItem] = useState([]);
+
+  useEffect(() => {
+    dispatch(tabActions.reset());
+  }, []);
 
   useEffect(() => {
     const fetchAllData = async () => {
