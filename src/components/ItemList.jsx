@@ -18,7 +18,7 @@ const ItemContainer = styled.div`
   flex-wrap: wrap;
   padding: 0px;
   gap: 24px;
-  width: 1128px;
+  width: 70.5rem;
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;

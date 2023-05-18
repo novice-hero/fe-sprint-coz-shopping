@@ -24,9 +24,9 @@ const MainContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0px;
   gap: 12px;
-
-  width: 66rem;
+  width: 70.5rem;
   height: 40rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
