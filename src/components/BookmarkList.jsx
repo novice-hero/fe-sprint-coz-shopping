@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ItemList from "./ItemList";
 import styled from "styled-components";
+import Error from "./Error";
 
 export default function BookmarkList() {
   const [item, setItem] = useState([]);
@@ -15,7 +16,11 @@ export default function BookmarkList() {
   return (
     <>
       <Label>북마크 리스트</Label>
-      {item.length ? <ItemList data={item} /> : <div>북마크가 없어잉...</div>}
+      {item.length ? (
+        <ItemList data={item} />
+      ) : (
+        <Error content={"북마크가 없어잉..."} />
+      )}
     </>
   );
 }

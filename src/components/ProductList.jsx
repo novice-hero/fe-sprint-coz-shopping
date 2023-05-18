@@ -2,19 +2,27 @@ import { useEffect, useState } from "react";
 import cozShoppingApi from "../api/cozShoppingApi";
 import ItemList from "./ItemList";
 import styled from "styled-components";
+import Error from "./Error";
 
 export default function ProductList() {
   const [item, setItem] = useState([]);
   useEffect(() => {
-    cozShoppingApi.getFourItem().then((data) => {
-      setItem([...data]);
-    });
+    cozShoppingApi
+      .getFourItem()
+      .then((data) => {
+        setItem([...data]);
+      })
+      .catch((err) => err.message);
   }, []);
 
   return (
     <>
       <Label>상품 리스트</Label>
-      <ItemList data={item} />
+      {item.length ? (
+        <ItemList data={item} />
+      ) : (
+        <Error content={"상품을 불러올 수 없어잉..."} />
+      )}
     </>
   );
 }
