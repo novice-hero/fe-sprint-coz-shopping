@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <_header>
+    <HeaderBox>
       <Link to={"/"}>
         <Logo>
           <img src="/logo.png" alt="logo" />
         </Logo>
       </Link>
       <MenuButton />
-    </_header>
+    </HeaderBox>
   );
 }
 
-const _header = styled.header`
+const HeaderBox = styled.header`
   width: 100%;
   height: 80px;
   position: sticky;
