@@ -15,9 +15,9 @@ export default function ProductListPage() {
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(1);
-  const [inviewHandled, setInviewHandled] = useState(false);
 
   const filteredItem = useMemo(() => {
+    setPage(1);
     if (filteredType === "All") {
       return items;
     } else return items.filter((item) => item.type === filteredType);
@@ -33,13 +33,11 @@ export default function ProductListPage() {
       dispatch(productListActions.updateItems(data));
     };
     fetchAllData();
-    setInviewHandled(true);
   }, [dispatch, filteredType]);
 
   useEffect(() => {
-    if (inview && !inviewHandled) setPage((prev) => prev + 1);
-    setInviewHandled(false);
-  }, [inview, inviewHandled]);
+    if (inview) setPage((prev) => prev + 1);
+  }, [inview]);
 
   return (
     <Wrapper>
