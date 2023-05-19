@@ -17,6 +17,7 @@ export default function ProductListPage() {
   const [page, setPage] = useState(1);
 
   const filteredItem = useMemo(() => {
+    setPage(1);
     if (filteredType === "All") {
       return items;
     } else return items.filter((item) => item.type === filteredType);
