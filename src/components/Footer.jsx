@@ -13,14 +13,14 @@ export default function Footer() {
   }, [inView]);
 
   return (
-    <_footer ref={ref}>
+    <FooterBox ref={ref}>
       <p>개인정보 처리방침 | 이용 약관</p>
       <p>All rights reserved @ Codestates</p>
-    </_footer>
+    </FooterBox>
   );
 }
 
-const _footer = styled.footer`
+const FooterBox = styled.footer`
   width: 100%;
   height: 58px;
   display: flex;

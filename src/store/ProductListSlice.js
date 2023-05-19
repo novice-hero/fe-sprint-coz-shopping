@@ -6,12 +6,12 @@ const productListSlice = createSlice({
     items: [],
     limit: 12,
     page: 0,
-    endPage: 1,
+    viewLimit: 12,
     inview: false,
   },
   reducers: {
-    addItems: (state, action) => {
-      state.items = [...state.items, ...action.payload];
+    updateItems: (state, action) => {
+      state.items = action.payload;
     },
     clearItems: (state) => {
       state.items = [];
@@ -22,17 +22,8 @@ const productListSlice = createSlice({
     changeId: (state, action) => {
       state.currentId = action.payload;
     },
-    setEndPage: (state, action) => {
-      state.endPage = action.payload;
-    },
     setInview: (state, action) => {
       state.inview = action.payload;
-    },
-    increasePage: (state) => {
-      state.page++;
-    },
-    resetPage: (state) => {
-      state.page = 0;
     },
   },
 });

@@ -1,22 +1,26 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import TabList from "../components/TabList";
 import cozShoppingApi from "../api/cozShoppingApi";
 import ItemList from "../components/ItemList";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { productListActions } from "../store/ProductListSlice";
 import { tabActions } from "../store/tabSlice";
+import { productListActions } from "../store/ProductListSlice";
 
 export default function ProductListPage() {
-  const filteredItem = useSelector((state) => state.productList.items);
   const filteredType = useSelector((state) => state.tab.currentType);
-  const viewLimit = useSelector((state) => state.productList.limit);
-  const page = useSelector((state) => state.productList.page);
-  const endPage = useSelector((state) => state.productList.endPage);
   const inview = useSelector((state) => state.productList.inview);
+  const viewLimit = useSelector((state) => state.productList.viewLimit);
+  const items = useSelector((state) => state.productList.items);
   const dispatch = useDispatch();
 
-  const [item, setItem] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const filteredItem = useMemo(() => {
+    if (filteredType === "All") {
+      return items;
+    } else return items.filter((item) => item.type === filteredType);
+  }, [filteredType, items]);
 
   useEffect(() => {
     dispatch(tabActions.reset());
@@ -25,56 +29,20 @@ export default function ProductListPage() {
   useEffect(() => {
     const fetchAllData = async () => {
       const data = await cozShoppingApi.getAllItem();
-      dispatch(productListActions.clearItems());
-
-      if (filteredType === "All") {
-        dispatch(productListActions.addItems(data));
-        dispatch(
-          productListActions.setEndPage(Math.ceil(data.length / viewLimit))
-        );
-      } else {
-        dispatch(
-          productListActions.addItems(
-            data.filter((v) => v.type === filteredType)
-          )
-        );
-        dispatch(
-          productListActions.setEndPage(
-            Math.ceil(filteredItem.length / viewLimit)
-          )
-        );
-      }
-      setItem([]);
-      dispatch(productListActions.resetPage());
+      dispatch(productListActions.updateItems(data));
     };
-
     fetchAllData();
-  }, [dispatch, filteredItem.length, filteredType, viewLimit]);
+  }, [dispatch, filteredType]);
 
   useEffect(() => {
-    if (inview) {
-      dispatch(productListActions.increasePage());
-    }
+    if (inview) setPage((prev) => prev + 1);
   }, [inview]);
-
-  const getItems = useCallback(() => {
-    page < endPage &&
-      setItem((prev) =>
-        prev.concat(
-          filteredItem.slice(page * viewLimit, page * viewLimit + viewLimit)
-        )
-      );
-  }, [page, endPage, filteredItem, viewLimit]);
-
-  useEffect(() => {
-    getItems();
-  }, [getItems]);
 
   return (
     <Wrapper>
       <MainContainer>
         <TabList />
-        <ItemList data={item} />
+        <ItemList data={filteredItem.slice(0, page * viewLimit)} />
       </MainContainer>
     </Wrapper>
   );
