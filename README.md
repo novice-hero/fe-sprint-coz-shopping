@@ -106,4 +106,7 @@ https://github.com/novice-hero/fe-sprint-coz-shopping/assets/77836614/b0d2c752-d
 
 <br>
 
-# 배운점 / 문제 
+# 문제해결과정과 배운점
+
+회고
+https://highero.tistory.com/entry/Coz-Shopping-Project-%ED%9A%8C%EA%B3%A0
