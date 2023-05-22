@@ -4,6 +4,12 @@ CodeStates에서 진행한 간단한 쇼핑몰 솔로 프로젝트입니다.
 
 <br>
 
+### 개발 기간
+
+5월 12일 ~ 18일
+
+<br>
+
 ### 메인 페이지
 ![메인페이지](https://github.com/novice-hero/fe-sprint-coz-shopping/assets/77836614/3a9c1b16-cb74-4be0-ac31-be6631a291e5)
 
