@@ -9,12 +9,12 @@ import styled from "styled-components";
 export default function BookmarkListPage() {
   const filteredType = useSelector((state) => state.tab.currentType);
   const inview = useSelector((state) => state.productList.inview);
+  const viewLimit = useSelector((state) => state.productList.viewLimit);
   const bookmarkItem = useSelector((state) => state.bookmark);
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(1);
 
-  // useMemo
   const filteredItem = useMemo(() => {
     if (filteredType === "All") {
       return bookmarkItem;
@@ -33,7 +33,7 @@ export default function BookmarkListPage() {
     <Wrapper>
       <MainContainer>
         <TabList />
-        <ItemList data={filteredItem.slice(0, page * 12)} />
+        <ItemList data={filteredItem.slice(0, page * viewLimit)} />
       </MainContainer>
     </Wrapper>
   );

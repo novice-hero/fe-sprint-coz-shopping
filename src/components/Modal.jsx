@@ -44,7 +44,7 @@ const Backdrop = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 99;
+  z-index: 5;
 `;
 
 const ModalContent = styled.div`

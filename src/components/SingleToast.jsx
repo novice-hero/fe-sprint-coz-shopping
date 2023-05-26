@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function SingleToast({ data }) {
+export function SingleToast({ data }) {
   return <Toast key={data.id}>{data.content}</Toast>;
 }
 
@@ -14,5 +14,5 @@ const Toast = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
-  z-index: 1;
+  z-index: 2;
 `;
