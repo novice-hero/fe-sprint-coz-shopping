@@ -35,7 +35,7 @@ export default function Bookmark({ data }) {
     <BookmarkButton
       onClick={() => {
         dispatch(bookmarkActions.remove(data.id));
-        handleToast(3000, "상품이 북마크에서 제거되었습니다.");
+        handleToast(3000, "🤍 상품이 북마크에서 제거되었습니다.");
       }}
     >
       <AiFillStar size={24} color="yellow" />
@@ -44,7 +44,7 @@ export default function Bookmark({ data }) {
     <BookmarkButton
       onClick={() => {
         dispatch(bookmarkActions.add(data));
-        handleToast(3000, "상품이 북마크에 추가되었습니다.");
+        handleToast(3000, "❤️ 상품이 북마크에 추가되었습니다.");
       }}
     >
       <AiFillStar size={24} color="#d8d8d8" />

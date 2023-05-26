@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import SingleToast from "./SingleToast";
+import { SingleToast } from "./SingleToast";
 
 export default function ToastContainer() {
   const toasts = useSelector((state) => state.toast.toastQueue);
-  console.log(toasts);
   return (
     <ToastBox>
       {toasts.map((toast) => (
@@ -26,4 +25,5 @@ const ToastBox = styled.section`
   bottom: 1rem;
   width: 20rem;
   height: 30rem;
+  z-index: 1;
 `;

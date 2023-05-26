@@ -78,7 +78,7 @@ export default function MenuButton() {
         <MenuLink to={"/product/list"}>
           <MenuItem onClick={handleClose} disableRipple>
             <GiPresent size={26} />
-            상품리스트 페이지
+            상품 페이지
           </MenuItem>
         </MenuLink>
         <Divider sx={{ my: 0.5 }} />
